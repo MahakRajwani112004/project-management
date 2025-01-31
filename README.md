@@ -1,5 +1,5 @@
 TaskBoard Project
-
+I have taken design inspiration from this Figma project management dashboard.
 Overview
 
 The TaskBoard project is a simple and intuitive task management web application built using React and TypeScript with NextUI as the primary UI component library. It allows users to organize tasks into three major categories:
