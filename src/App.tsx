@@ -4,7 +4,7 @@ import Routes from './Routes';
 import { NextUIProvider } from '@nextui-org/react';
 
 import { ToastContainer } from 'react-toastify';
-import { TaskProvider } from './context/TaskContext';
+import { TaskProvider } from './context/TaskContextProvider';
 
 const App = () => {
 	return (

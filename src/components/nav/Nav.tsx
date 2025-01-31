@@ -1,3 +1,4 @@
+import { cn } from '@nextui-org/react';
 import { Calender, MessageQuestionIcon, NotificationIcon, SearchIcon } from '../../assets/icon';
 import CustomInput from '../CustomInput';
 
@@ -9,9 +10,10 @@ const Nav = (props: INavProps) => {
 	const { isCollapsed } = props;
 	return (
 		<nav
-			className={`flex justify-between items-center fixed z-50 bg-white left-0 right-0 pr-10 py-3 border ${
-				isCollapsed ? 'ml-20' : 'ml-72'
-			}`}
+			className={cn('flex justify-between items-center fixed z-50 bg-white left-0 right-0 pr-10 py-3 border', {
+				'ml-20': isCollapsed,
+				'ml-72': !isCollapsed
+			})}
 		>
 			<div className=" flex justify-center items-center ml-4">
 				<CustomInput placeholder="Search Anything" label="" name="search" StartContent={<SearchIcon />} />

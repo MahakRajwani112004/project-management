@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
 import { Task, TaskContextProps, TaskState } from '../types/task.types';
 import { completedInitial, inProgressInitial, todoInitial } from '../utils/constants';
+import { Status } from '../types/enum';
 
 interface ITaskContextProviderProps {
 	children: React.ReactNode;
@@ -33,6 +34,12 @@ export const TaskProvider = (props: ITaskContextProviderProps) => {
 			[category]: [...prev[category], task]
 		}));
 	};
+	const updateTaskStatus = (taskId: string, newStatus: Status, category: keyof TaskState) => {
+		setTasks(prevTasks => ({
+			...prevTasks,
+			[category]: prevTasks[category].map(task => (task.taskId === taskId ? { ...task, status: newStatus } : task))
+		}));
+	};
 
 	const moveTask = (taskId: string, fromCategory: keyof TaskState, toCategory: keyof TaskState) => {
 		setTasks(prev => {
@@ -60,7 +67,11 @@ export const TaskProvider = (props: ITaskContextProviderProps) => {
 		}));
 	};
 
-	return <TaskContext.Provider value={{ tasks, addTask, moveTask, removeTask }}>{children}</TaskContext.Provider>;
+	return (
+		<TaskContext.Provider value={{ tasks, addTask, moveTask, removeTask, updateTaskStatus }}>
+			{children}
+		</TaskContext.Provider>
+	);
 };
 
 export const useTasks = () => {

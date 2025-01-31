@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router';
+import { cn } from '@nextui-org/react';
 import Nav from '../nav/Nav';
 import SidePanel from '../sidepanel/SidePanel';
 
@@ -14,9 +15,10 @@ const Layout = () => {
 			<Nav isCollapsed={isCollapsed} />
 
 			<div
-				className={`h-fit w-[calc(100vw - 100px)] xl:w-[calc(100vw - 200px)] ml-48  bg-white xl: ${
-					isCollapsed ? 'ml-14' : 'ml-72'
-				}  xl:pt-20 px-6 xl:px-9 pb-8  scroll-auto ml`}
+				className={cn('h-fit w-full xl:w-[calc(100vw - 200px)] bg-white xl:pt-20 px-6 xl:px-9 pb-8', {
+					'ml-12': isCollapsed,
+					'ml-72': !isCollapsed
+				})}
 			>
 				<Outlet />
 			</div>

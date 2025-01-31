@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { Formik, Form } from 'formik';
-import { useTasks } from '../../../../context/TaskContext';
+import { useTasks } from '../../../../context/TaskContextProvider';
 import { Task } from '../../../../types/task.types';
 import CustomButton from '../../../CustomButton';
 import CustomInput from '../../../CustomInput';
@@ -11,19 +11,22 @@ import { NewTaskFormValidationSchema } from '../home.validation';
 
 interface INewTaskFormProps {
 	onClose: () => void;
+	taskData?: Task;
 }
 
 const NewTaskForm = (props: INewTaskFormProps) => {
-	const { onClose } = props;
+	const { onClose, taskData } = props;
 	const { addTask } = useTasks();
 
 	const NewTaskFormInitails: Task = {
-		taskId: '',
-		title: '',
-		description: '',
-		category: 'todo',
-		status: 'low'
+		taskId: taskData?.taskId || '',
+		title: taskData?.title || '',
+		description: taskData?.description || ' ',
+		category: taskData?.category || 'todo',
+		status: taskData?.status || 'low'
 	};
+
+	const isEdit = !!taskData;
 
 	const handleSubmitValue = useCallback(
 		(values: Task) => {
@@ -40,10 +43,21 @@ const NewTaskForm = (props: INewTaskFormProps) => {
 		},
 		[addTask, onClose]
 	);
+	//function that return component
+	const renderButtons = () => {
+		const buttonText = isEdit ? 'Confirm Edit' : 'Add Task';
+		const buttonClass = 'bg-blue';
+
+		return (
+			<CustomButton type="submit" className={buttonClass}>
+				{buttonText}
+			</CustomButton>
+		);
+	};
 
 	return (
 		<div className="max-w-2xl">
-			<h1 className="text-2xl font-semibold text-center mb-6">Create New Task</h1>
+			<h1 className="text-2xl font-semibold text-center mb-6">{isEdit ? 'Edit Task Details ' : 'Create New Task'}</h1>
 
 			<Formik
 				initialValues={NewTaskFormInitails}
@@ -83,6 +97,7 @@ const NewTaskForm = (props: INewTaskFormProps) => {
 							}}
 							options={priorityOtpions}
 							label="Select Priority of Task"
+							value={priorityOtpions.find(options => options.value === values.status) || null}
 							isRequired
 							isInvalid={!!errors.status}
 							errorMessage={errors.status}
@@ -91,6 +106,7 @@ const NewTaskForm = (props: INewTaskFormProps) => {
 							onChange={selectedOption => {
 								setFieldValue('category', selectedOption?.value);
 							}}
+							value={categoryOtpions.find(options => options.value === values.category) || null}
 							options={categoryOtpions}
 							label="Select Category of Task"
 							isRequired
@@ -99,9 +115,8 @@ const NewTaskForm = (props: INewTaskFormProps) => {
 						/>
 						<div className="flex justify-center gap-5 mt-4">
 							<CustomButton onPress={onClose}>Cancel</CustomButton>
-							<CustomButton type="submit" className=" bg-blue">
-								Add Task
-							</CustomButton>
+
+							{renderButtons()}
 						</div>
 					</Form>
 				)}
