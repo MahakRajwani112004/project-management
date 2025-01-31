@@ -34,50 +34,6 @@ Drag-and-Drop: Framer Motion
 
 State Management: React Context API
 
-Folder Structure
-
-TaskBoard/
-├── src/
-│   ├── components/
-│   │   ├── TaskBoard.tsx
-│   │   ├── TaskColumn.tsx
-│   │   └── CustomCard.tsx
-│   ├── contexts/
-│   │   └── TaskContext.tsx
-│   ├── App.tsx
-│   └── index.tsx
-└── README.md
-
-Getting Started
-
-Prerequisites
-
-Node.js (v14 or higher)
-
-npm or yarn package manager
-
-Installation
-
-Clone the repository:
-
-git clone https://github.com/your-username/TaskBoard.git
-
-Navigate to the project directory:
-
-cd TaskBoard
-
-Install dependencies:
-
-npm install
-
-Running the Application
-
-To start the development server, run:
-
-npm start
-
-Open http://localhost:3000 to view the app in your browser.
-
 Usage
 
 Add tasks to the "To Do" column.
@@ -124,27 +80,8 @@ Example Task State
 
 Future Enhancements
 
-Persistent storage using local storage or a backend.
-
-User authentication and task sharing.
-
 Enhanced drag-and-drop experience with animations.
 
-Contributing
-
-Fork the repository.
-
-Create a new branch (feature/task-enhancement).
-
-Commit your changes (git commit -m 'Add new feature').
-
-Push to the branch (git push origin feature/task-enhancement).
-
-Open a Pull Request.
-
-License
-
-This project is licensed under the MIT License.
 
 Contact
 
