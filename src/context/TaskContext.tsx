@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext } from 'react';
 import { Task, TaskContextProps, TaskState } from '../types/task.types';
+import { completedInitial, inProgressInitial, todoInitial } from '../utils/constants';
 
 interface ITaskContextProviderProps {
 	children: React.ReactNode;
@@ -17,12 +18,15 @@ export const useTaskContext = () => {
 
 export const TaskProvider = (props: ITaskContextProviderProps) => {
 	const { children } = props;
-	const [tasks, setTasks] = useState<TaskState>({
-		todo: [],
-		inProgress: [],
-		completed: []
-	});
 
+	const initialTasks: TaskState = {
+		todo: todoInitial,
+		inProgress: inProgressInitial,
+		completed: completedInitial
+	};
+
+	const [tasks, setTasks] = useState<TaskState>(initialTasks);
+	//ADD New Task
 	const addTask = (task: Task, category: keyof TaskState) => {
 		setTasks(prev => ({
 			...prev,
@@ -35,7 +39,7 @@ export const TaskProvider = (props: ITaskContextProviderProps) => {
 			const sourceCategory = [...prev[fromCategory]];
 			const targetCategory = [...prev[toCategory]];
 
-			const taskIndex = sourceCategory.findIndex(task => task.id === taskId);
+			const taskIndex = sourceCategory.findIndex(task => task.taskId === taskId);
 			if (taskIndex === -1) return prev;
 
 			const [taskToMove] = sourceCategory.splice(taskIndex, 1);
@@ -48,11 +52,11 @@ export const TaskProvider = (props: ITaskContextProviderProps) => {
 			};
 		});
 	};
-
+	//DELETE Task
 	const removeTask = (taskId: string, category: keyof TaskState) => {
 		setTasks(prev => ({
 			...prev,
-			[category]: prev[category].filter(task => task.id !== taskId)
+			[category]: prev[category].filter(task => task.taskId !== taskId)
 		}));
 	};
 

@@ -1,7 +1,11 @@
+import { status, taskCategory } from './common.type';
+
 export interface Task {
-	id: string;
+	taskId: string;
+	category: taskCategory;
 	title: string;
 	description: string;
+	status: status;
 }
 
 export interface TaskState {
@@ -12,7 +16,7 @@ export interface TaskState {
 
 export interface TaskContextProps {
 	tasks: TaskState;
-	addTask: (task: Task, category: keyof TaskState) => void;
-	moveTask: (taskId: string, fromCategory: keyof TaskState, toCategory: keyof TaskState) => void;
-	removeTask: (taskId: string, category: keyof TaskState) => void;
+	addTask: (task: Task, category: taskCategory) => void;
+	moveTask: (taskId: string, fromCategory: taskCategory, toCategory: taskCategory) => void;
+	removeTask: (taskId: string, category: taskCategory) => void;
 }

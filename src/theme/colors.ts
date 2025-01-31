@@ -1,7 +1,7 @@
 const colors = {
 	red: '#891A1C',
 	alert: '#9E1710',
-	whitesmoke: '#f5f5f5',
+	whitesmoke: '#F5F5F5',
 	green: '#0A6321',
 	black: '#000000',
 	blue: '#4798D2',
@@ -27,37 +27,14 @@ const colors = {
 	cream: '#FAFAFA',
 
 	//Colors pattern for table chips
-	lightYellow: '#F5A52433',
-	lightGreen: '#17C96433',
-	lightRed: '#F3126033',
-	solidYellow: '#F5A524',
-	solidGreen: '#17C964',
-	solidRed: '#f31260',
-	lightgrey: '#D9D9D9',
-	brandRed: '#CD323233',
-	warmRed: '#CD3232',
-	semiTransparentBlue: '#4040FF33',
-	vividBlue: '#4040FF',
-	vividPurple: '#CD32BD33',
-	boldPink: '#CD32BD',
-	goldMist: '#FFD70033',
-	richGold: '#FFD700',
 	softSky: '#ADD8E633',
 	mutedBlue: '#609CB0',
-	lightOrange: '#FFA50033',
-	warmOrange: '#FFA500',
-	mintGreen: '#90EE9033',
-	lushGreen: '#5BC95B',
-	deepAqua: '#008080',
-	tealMist: '#00808033',
-	lavenderPurple: '#9370DB',
-	transparentPurple: '#9370DB33',
+	brandRed: '#CD323233',
+	warmRed: '#CD3232',
+	goldMist: '#FFD70033',
+	richGold: '#FFD700',
 	darkGreen: '#00640033',
-	forestGreen: '#006400',
-	orangeMist: '#FF450033',
-	flameOrange: '#FF4500',
-	'slate-grey': '#71717A',
-	'navy-blue': '#4277FF'
+	forestGreen: '#006400'
 };
 
 export default colors;

@@ -1,7 +1,8 @@
 import { Link } from 'react-router';
 import { Divider } from '@nextui-org/react';
 import { projectData, sidePanelItems } from '../../utils/constants';
-import { LeftArrowIcon, Logo } from '../../assets/icon'; // icon for collapse button
+import { LeftArrowIcon, Logo } from '../../assets/icon';
+import CustomButtonIcon from '../CustomButtonIcon';
 
 interface ISidePanelProps {
 	collapsed: boolean;
@@ -23,17 +24,16 @@ const SidePanel = (props: ISidePanelProps) => {
 
 					{!collapsed && <h1 className="text-lg font-semibold">Project Management</h1>}
 				</div>
-				<button onClick={toggleCollapse}>
-					<LeftArrowIcon />
-				</button>
+
+				<CustomButtonIcon Icon={<LeftArrowIcon />} onPress={toggleCollapse} className="bg-transparent" />
 			</div>
 
 			<ul className="mt-6">
-				{Object.entries(sidePanelItems).map(([key, { icon: Icon, url, label }]) => (
-					<li key={key} className="mb-4 flex items-center">
-						<Link to={url} className="flex items-center gap-2 text-gray-700 hover:text-black">
-							<Icon />
-							{!collapsed && <span className="mb-1">{label}</span>}
+				{sidePanelItems?.map((data, index) => (
+					<li key={index} className="mb-4 flex items-center">
+						<Link to={data.url} className="flex items-center gap-2 text-gray-700 hover:text-black">
+							<data.icon />
+							{!collapsed && <span className="mb-1">{data.label}</span>}
 						</Link>
 					</li>
 				))}

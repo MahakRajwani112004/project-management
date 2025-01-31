@@ -5,8 +5,8 @@ interface CustomHeaderProps {
 const CustomHeader = (props: CustomHeaderProps) => {
 	const { title } = props;
 	return (
-		<header className="w-full flex justify-between items-center my-5">
-			<h1 className="text-2xl font-semibold text-midnight">{title}</h1>
+		<header className="flex justify-between items-center ">
+			<h1 className="text-2xl font-bold text-midnight">{title}</h1>
 		</header>
 	);
 };

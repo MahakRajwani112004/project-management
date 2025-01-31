@@ -3,14 +3,16 @@ import React from 'react';
 
 interface ICustomButtonProps {
 	className?: string;
-	onClick?: () => void;
+	onPress?: () => void;
+	type?: 'button' | 'submit' | 'reset';
+	buttonRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
 	children: React.ReactNode;
 }
 
 const CustomButton = (props: ICustomButtonProps) => {
-	const { className, onClick, children } = props;
+	const { className, onPress, children, type, buttonRadius } = props;
 	return (
-		<Button className={className} onPress={onClick}>
+		<Button className={className} onPress={onPress} type={type} radius={buttonRadius}>
 			{children}
 		</Button>
 	);

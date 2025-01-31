@@ -2,7 +2,7 @@ import { Routes as AppRoutes, Route } from 'react-router';
 
 import { APP_ROUTES } from './utils/constants';
 import Layout from './components/layouts/Layout';
-import Home from './components/modules/home/Home';
+import Home from './components/modules/home/pages/Home';
 import { BrowserRouter } from 'react-router';
 import Task from './components/modules/tasks/Task';
 import Messages from './components/modules/messages/Messages';

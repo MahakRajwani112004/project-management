@@ -11,6 +11,10 @@ import MembersIcon from './profile-2user.svg';
 import SettingsIcon from './setting-2.svg';
 import DocIcon from './docs.svg';
 import DownloadIcon from './download.svg';
+import AddIcon from './add-square.svg';
+import PencilIcon from './arrow-square-up.svg';
+import LinkIcon from './Group.svg';
+import DotIcon from './dots.svg';
 export {
 	Calender,
 	SearchIcon,
@@ -24,5 +28,9 @@ export {
 	MembersIcon,
 	SettingsIcon,
 	DocIcon,
-	DownloadIcon
+	DownloadIcon,
+	AddIcon,
+	PencilIcon,
+	LinkIcon,
+	DotIcon
 };
