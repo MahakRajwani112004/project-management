@@ -10,20 +10,6 @@ In Progress
 
 Completed
 
-The app features drag-and-drop functionality powered by Framer Motion, enabling seamless task movement between categories while maintaining state. This project is designed with state optimization and constant data operations, making it scalable and efficient.
-
-Features
-
-Task Categorization: Organize tasks under "To Do," "In Progress," and "Completed."
-
-Drag and Drop: Smooth drag-and-drop feature to move tasks between categories.
-
-Persistent State Management: Manage task states using a context-based approach.
-
-Custom Card Component: Visually appealing cards to display task details.
-
-UI Components: Styled using NextUI for a clean and modern interface.
-
 Tech Stack
 
 Frontend: React, TypeScript
@@ -78,9 +64,7 @@ Example Task State
   "completed": []
 }
 
-Future Enhancements
 
-Enhanced drag-and-drop experience with animations.
 
 
 Contact
