@@ -1,25 +1,24 @@
-TaskBoard Project
-I have taken design inspiration from this Figma project management dashboard.
-https://www.figma.com/design/JKf79kTq3XSY2Bg8ZppEXG/Project-Management-Dashboard-(Community)?node-id=0-1&p=f&t=0UK5V8L1kpAj9lsu-0
-Overview
+# TaskBoard Project
+The TaskBoard project is a simple and intuitive task management web application built using **React** and **TypeScript** with **NextUI** as the primary UI component library. It allows users to organize tasks into three major categories: **To Do**, **In Progress**, and **Completed**.
 
-The TaskBoard project is a simple and intuitive task management web application built using React and TypeScript with NextUI as the primary UI component library. It allows users to organize tasks into three major categories:
+## Overview
 
-To Do
+The TaskBoard project is inspired by the [Project Management Dashboard](https://www.figma.com/design/JKf79kTq3XSY2Bg8ZppEXG/Project-Management-Dashboard-(Community)?node-id=0-1&p=f&t=0UK5V8L1kpAj9lsu-0) design on Figma. It provides a clean and user-friendly interface for managing tasks efficiently.
 
-In Progress
+## Features
 
-Completed
+- **Task Management**: Organize tasks into three categories: To Do, In Progress, and Completed.
+- **Drag-and-Drop**: Easily move tasks between categories using drag-and-drop functionality.
+- **Responsive Design**: Built with a responsive layout for seamless use on all devices.
+- **Customizable**: Add, move, and remove tasks with ease.
 
-Tech Stack
+## Tech Stack
 
-Frontend: React, TypeScript
+- **Frontend**: React, TypeScript
+- **UI Components**: [NextUI](https://nextui.org/)
+- **Drag-and-Drop**: [Framer Motion](https://www.framer.com/motion/)
+- **State Management**: React Context API
 
-UI Components: NextUI
-
-Drag-and-Drop: Framer Motion
-
-State Management: React Context API
 
 Usage
 
