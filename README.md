@@ -26,18 +26,26 @@ To set up and run the TaskBoard project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/MahakRajwani112004/project-management.git
-   cd project-management
+    git clone https://github.com/MahakRajwani112004/project-management.git
+    cd project-management
 2 . **Install dependencies:**
+   ```bash
     yarn install
+   ```
 3 . **Start the development server:**
+   ```bash
     yarn dev
+   ```
 4. **Open your browser and navigate to:**
+   ```bash
    http://localhost:5173/app/home
+   ```
 5. **Explore the UI:**
+   ```bash
     Add tasks to the "To Do" column.
     Drag and drop tasks between columns.
     Remove tasks as needed.
+   ```
 
 Usage
 
