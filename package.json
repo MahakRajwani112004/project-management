@@ -11,25 +11,16 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
-		"@aws-amplify/auth": "^6.9.0",
 		"@nextui-org/react": "^2.6.8",
-		"aws-amplify": "^6.11.0",
-		"axios": "^1.7.9",
 		"classnames": "^2.5.1",
-		"dayjs": "^1.11.13",
 		"formik": "^2.4.6",
-		"framer-motion": "^11.14.4",
 		"motion": "^12.0.6",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"react-error-boundary": "^5.0.0",
-		"react-flags-select": "^2.2.3",
 		"react-router": "^7.0.2",
 		"react-select": "^5.9.0",
 		"react-toastify": "^11.0.2",
-		"swr": "^2.2.5",
-		"yup": "^1.5.0",
-		"zustand": "^5.0.2"
+		"yup": "^1.5.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.15.0",

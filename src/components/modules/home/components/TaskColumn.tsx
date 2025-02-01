@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTasks } from '../../../../context/TaskContext';
 import { taskCategory } from '../../../../types/common.type';
 import { Task } from '../../../../types/task.types';
 import CustomButtonIcon from '../../../CustomButtonIcon';
@@ -8,6 +7,7 @@ import NewTaskModal from '../../../modals/NewTaskModal';
 import { AddIcon } from '../../../../assets/icon';
 import { commonKey } from '../../../../utils/constants';
 import showToast from '../../../../utils/showToast';
+import { useTasks } from '../../../../context/TaskContextProvider';
 
 interface ITaskColumnProps {
 	category: taskCategory;
