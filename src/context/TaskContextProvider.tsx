@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
 import { Task, TaskContextProps, TaskState } from '../types/task.types';
 import { completedInitial, inProgressInitial, todoInitial } from '../utils/constants';
-import { Status } from '../types/enum';
+import { status } from '../types/common.type';
 
 interface ITaskContextProviderProps {
 	children: React.ReactNode;
@@ -34,7 +34,7 @@ export const TaskProvider = (props: ITaskContextProviderProps) => {
 			[category]: [...prev[category], task]
 		}));
 	};
-	const updateTaskStatus = (taskId: string, newStatus: Status, category: keyof TaskState) => {
+	const updateTaskStatus = (taskId: string, newStatus: status, category: keyof TaskState) => {
 		setTasks(prevTasks => ({
 			...prevTasks,
 			[category]: prevTasks[category].map(task => (task.taskId === taskId ? { ...task, status: newStatus } : task))
@@ -66,9 +66,15 @@ export const TaskProvider = (props: ITaskContextProviderProps) => {
 			[category]: prev[category].filter(task => task.taskId !== taskId)
 		}));
 	};
-
+	//EDIT Task
+	const editTask = (updatedTask: Task, category: keyof TaskState) => {
+		setTasks(prev => ({
+			...prev,
+			[category]: prev[category].map(task => (task.taskId === updatedTask.taskId ? updatedTask : task))
+		}));
+	};
 	return (
-		<TaskContext.Provider value={{ tasks, addTask, moveTask, removeTask, updateTaskStatus }}>
+		<TaskContext.Provider value={{ tasks, addTask, moveTask, removeTask, updateTaskStatus, editTask }}>
 			{children}
 		</TaskContext.Provider>
 	);

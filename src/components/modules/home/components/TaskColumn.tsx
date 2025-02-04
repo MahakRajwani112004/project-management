@@ -8,6 +8,7 @@ import { AddIcon } from '../../../../assets/icon';
 import { commonKey } from '../../../../utils/constants';
 import showToast from '../../../../utils/showToast';
 import { useTasks } from '../../../../context/TaskContextProvider';
+import ChangeStatusModal from '../../../modals/ChangeStatusModal';
 
 interface ITaskColumnProps {
 	category: taskCategory;
@@ -21,33 +22,44 @@ const TaskColumn = (props: ITaskColumnProps) => {
 
 	//Local State
 	const [isModalOpen, setModalOpen] = useState(false);
+	const [isChangeStatusModalOpen, setChangeStatusModalOpen] = useState(false);
+	const [selectedTask, setSelectedTask] = useState<Task>();
 
 	//Local variables
 	const filteredTasks = tasks[category];
 
 	//helper functions
-	const toggleModal = () => setModalOpen(prev => !prev);
+	const toggleNewTaskModal = () => {
+		setSelectedTask(undefined);
+		setModalOpen(prev => !prev);
+	};
 
-	const handleDropdownPress = async (selectedDropdownKey: React.Key, selectedTask: Task) => {
-		if (!selectedDropdownKey || !selectedTask) return;
+	const toggleStatusModal = () => setChangeStatusModalOpen(prev => !prev);
+	const handleDropdownPress = async (selectedDropdownKey: React.Key, task: Task) => {
+		if (!selectedDropdownKey || !task) return;
 
 		switch (selectedDropdownKey) {
 			case commonKey.view:
-				console.log('View task:', selectedTask);
+				console.log('View task:', task);
 				break;
+
 			case commonKey.edit:
-				return;
+				setSelectedTask(task);
+				toggleNewTaskModal();
+				break;
 
 			case commonKey.delete:
-				removeTask(selectedTask.taskId, selectedTask.category);
+				removeTask(task.taskId, task.category);
 				showToast('Deleted Successfully', 'success');
 				break;
 
 			case commonKey.change_status:
-				return;
+				setSelectedTask(task);
+				toggleStatusModal();
+				break;
 
 			default:
-				return;
+				break;
 		}
 	};
 
@@ -61,7 +73,7 @@ const TaskColumn = (props: ITaskColumnProps) => {
 			<div className="flex w-full justify-between p-5">
 				<h1 className="font-bold">{title}</h1>
 
-				<CustomButtonIcon Icon={<AddIcon />} className="bg-transparent" onPress={toggleModal} />
+				<CustomButtonIcon Icon={<AddIcon />} className="bg-transparent" onPress={toggleNewTaskModal} />
 			</div>
 			<div>
 				{filteredTasks.length > 0 ? (
@@ -78,7 +90,8 @@ const TaskColumn = (props: ITaskColumnProps) => {
 				)}
 			</div>
 
-			<NewTaskModal isOpen={isModalOpen} onClose={toggleModal} />
+			<NewTaskModal isOpen={isModalOpen} onClose={toggleNewTaskModal} taskData={selectedTask} />
+			<ChangeStatusModal isOpen={isChangeStatusModalOpen} onClose={toggleStatusModal} taskData={selectedTask} />
 		</div>
 	);
 };

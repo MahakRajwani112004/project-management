@@ -9,15 +9,15 @@ const Layout = () => {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 
 	return (
-		<div className="h-full   bg-screen">
+		<div className="h-full   bg-screen  overflow-x-hidden">
 			<SidePanel collapsed={isCollapsed} setCollapsed={setIsCollapsed} />
 
 			<Nav isCollapsed={isCollapsed} />
 
 			<div
-				className={cn('h-fit w-full xl:w-[calc(100vw - 200px)] bg-white xl:pt-20 px-6 xl:px-9 pb-8', {
-					'ml-12': isCollapsed,
-					'ml-72': !isCollapsed
+				className={cn('h-fit  bg-white xl:pt-20 px-4 xl:px-14 pb-8  overflow-x-hidden', {
+					'ml-16  xl:w-[calc(100vw-80px)]': isCollapsed,
+					'ml-64  xl:w-[calc(100vw-256px)]': !isCollapsed
 				})}
 			>
 				<Outlet />

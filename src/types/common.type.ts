@@ -24,7 +24,9 @@ export interface ICustomDropdownMenuItem {
 	href?: string;
 	isReadOnly?: boolean;
 }
-
+export interface statusType {
+	status: status;
+}
 export interface RemoveTaskProps {
 	id: string;
 	category: taskCategory;

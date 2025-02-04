@@ -16,12 +16,12 @@ interface INewTaskFormProps {
 
 const NewTaskForm = (props: INewTaskFormProps) => {
 	const { onClose, taskData } = props;
-	const { addTask } = useTasks();
+	const { addTask, editTask } = useTasks();
 
 	const NewTaskFormInitails: Task = {
 		taskId: taskData?.taskId || '',
 		title: taskData?.title || '',
-		description: taskData?.description || ' ',
+		description: taskData?.description || '',
 		category: taskData?.category || 'todo',
 		status: taskData?.status || 'low'
 	};
@@ -30,19 +30,27 @@ const NewTaskForm = (props: INewTaskFormProps) => {
 
 	const handleSubmitValue = useCallback(
 		(values: Task) => {
-			const newTask = {
-				taskId: Date.now().toString(),
+			const taskToSave = {
+				taskId: isEdit ? values.taskId : Date.now().toString(),
 				title: values.title,
 				description: values.description,
 				category: values.category,
 				status: values.status
 			};
-			addTask(newTask, newTask.category);
-			showToast('Task Added Successfully', 'success');
+
+			if (isEdit) {
+				editTask(taskToSave, taskToSave.category);
+				showToast('Task Edited Successfully', 'success');
+			} else {
+				addTask(taskToSave, taskToSave.category);
+				showToast('Task Added Successfully', 'success');
+			}
+
 			onClose();
 		},
-		[addTask, onClose]
+		[addTask, editTask, isEdit, onClose]
 	);
+
 	//function that return component
 	const renderButtons = () => {
 		const buttonText = isEdit ? 'Confirm Edit' : 'Add Task';
@@ -80,13 +88,13 @@ const NewTaskForm = (props: INewTaskFormProps) => {
 						/>
 						<CustomInput
 							label="Description"
+							labelPlacement="outside"
 							placeholder="Enter task description"
-							value={values.description}
+							name="description"
+							value={values?.description}
 							errorMessage={errors.description}
 							isInvalid={!!(touched.description && errors.description)}
 							labelColor="black"
-							name="description"
-							labelPlacement="outside"
 							onChange={handleChange}
 							onBlur={handleBlur}
 						/>
