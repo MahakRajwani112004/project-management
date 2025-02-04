@@ -44,8 +44,9 @@ const TaskColumn = (props: ITaskColumnProps) => {
 				break;
 
 			case commonKey.edit:
-				setSelectedTask(task);
 				toggleNewTaskModal();
+				setSelectedTask(task);
+				
 				break;
 
 			case commonKey.delete:
